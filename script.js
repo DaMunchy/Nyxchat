@@ -41,12 +41,19 @@ form.addEventListener("submit", async (e) => {
   input.value = "Follow DaMunchy On Github";
   input.disabled = true;
 
+  // 🚀 Set status to typing...
+  setStatus("Typing...");
+
   const reply = await callGeminiAPI(message);
   appendMessage("ai", reply);
+
+  // ✅ Back to online after response
+  setStatus("Online");
 
   input.value = "";
   input.disabled = false;
 });
+
 
 function appendMessage(sender, text) {
   const container = document.createElement("div");
@@ -70,7 +77,14 @@ function appendMessage(sender, text) {
 
 function formatMessage(message) {
   return message
-    .replace(/```(.*?)```/gs, '<code class="bg-gray-600 text-green-400 px-1 py-0.5 rounded text-sm">$1</code>')
+    .replace(/```(.*?)```/gs, '<pre class="whitespace-pre-wrap break-words bg-gray-800 text-green-300 p-2 rounded-lg overflow-x-auto text-sm">$1</pre>')
+
     .replace(/\*\*(.*?)\*\*/g, '<span class="font-bold text-black-400">$1</span>')
     .replace(/\*(.*?)\*/g, '<em class="italic text-blue-300">$1</em>');
 }
+
+function setStatus(text) {
+  const statusEl = document.getElementById("status");
+  if (statusEl) statusEl.textContent = text;
+}
+

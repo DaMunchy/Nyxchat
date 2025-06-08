@@ -34,6 +34,16 @@
         backdrop-filter: blur(3px);
         z-index: -1;
       }
+      #status {
+  transition: opacity 0.3s ease-in-out;
+}
+pre, code {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+
     </style>
   </head>
 
@@ -44,7 +54,12 @@
     <div class="blur-overlay"></div>
 
     <div class="flex flex-col h-screen px-4 py-6">
-      <h1 class="text-3xl font-semibold text-center mb-4">Nyxelia</h1>
+      <div class="text-center mb-4">
+  <h1 class="text-3xl font-semibold text-center mb-4">
+  Nyxelia <span id="status" class="text-sm font-normal text-gray-400 align-middle">Online</span>
+</h1>
+</div>
+
 
       <div
         id="chat-history"
