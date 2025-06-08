@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nyxelia Chat</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
     <script src="/script.js" defer></script>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
@@ -15,7 +16,6 @@
         overflow: hidden;
         margin: 0;
       }
-
       .bg-foto {
         position: fixed;
         right: 0;
@@ -25,7 +25,6 @@
         z-index: -2;
         object-fit: cover;
       }
-
       .blur-overlay {
         position: fixed;
         top: 0;
@@ -43,27 +42,32 @@
       class="bg-foto"
       src="https://files.catbox.moe/5mie1c.jpeg"
       alt="Background"
+      class="bg-image"
     />
+
     <div class="blur-overlay"></div>
 
-    <div class="flex flex-col h-screen px-4 py-4">
+    <div class="flex flex-col h-screen px-4 py-6">
       <h1 class="text-3xl font-semibold text-center mb-4">Nyxelia</h1>
 
       <div
         id="chat-history"
-        class="flex-1 overflow-y-auto mb-3 space-y-3 pr-2"
+        class="flex-1 overflow-y-auto mb-4 space-y-3 pr-2"
       ></div>
 
       <form
         id="chat-form"
-        class="flex items-center gap-2 bg-black/50 p-3 rounded-xl shadow-lg"
+        class="flex items-center gap-2 bg-black/50 p-5 rounded-xl shadow-lg"
       >
-        <input
-          id="user-input"
-          type="text"
-          placeholder="How to make a whatsapp bot"
-          class="flex-1 px-4 py-3 text-black text-lg rounded-lg outline-none placeholder-gray-500 leading-tight"
-        />
+       <input
+  id="user-input"
+  type="text"
+  placeholder="How to make a whatsapp bot"
+  class="flex-1 px-4 py-3 text-black text-lg rounded-lg outline-none placeholder-gray-500 leading-tight"
+/>
+
+
+
         <button
           type="submit"
           class="px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-lg shadow-md transition duration-200"
