@@ -48,7 +48,7 @@ form.addEventListener("submit", async (e) => {
   appendMessage("ai", reply);
 
   // ✅ Back to online after response
-  setStatus("Online");
+  setStatus("⚪ Online"); 
 
   input.value = "";
   input.disabled = false;
