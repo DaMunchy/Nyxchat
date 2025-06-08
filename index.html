@@ -16,7 +16,7 @@
         overflow: hidden;
         margin: 0;
       }
-      .bg-video {
+      .bg-foto {
         position: fixed;
         right: 0;
         bottom: 0;
@@ -31,16 +31,14 @@
         left: 0;
         width: 100%;
         height: 100%;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(3px);
         z-index: -1;
       }
     </style>
   </head>
 
   <body class="text-white font-sans">
-    <video autoplay muted loop class="bg-video">
-  <source src="/public/bg.mp4" type="video/mp4" />
-</video>
+     <img class="bg-foto" src="/bg.jpeg" alt="Background" class="bg-image" />
 
 
     <div class="blur-overlay"></div>
