@@ -217,4 +217,3 @@ langMenu?.querySelectorAll("button").forEach((btn) => {
 });
 
 });
-
