@@ -181,9 +181,15 @@ async function appendMessage(sender, text) {
 function formatMessage(message) {
   return message
     .replace(/```([\s\S]*?)```/g, '<pre class="whitespace-pre-wrap break-words bg-gray-800 text-green-300 p-2 rounded-lg overflow-x-auto text-sm">$1</pre>')
-    .replace(/\*\*(.*?)\*\*/g, '<span class="font-bold text-black-400">$1</span>')
-    .replace(/\*(.*?)\*/g, '<em class="italic text-blue-300">$1</em>');
+    .replace(/`([^`]+)`/g, '<code class="bg-gray-700 px-1 py-0.5 rounded text-green-400">$1</code>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/(?<!\*)\*(?!\*)(.*?)\*(?!\*)/g, '<em class="italic text-blue-300">$1</em>')
+    .replace(/~~(.*?)~~/g, '<del>$1</del>')
+    .replace(/^> (.*$)/gm, '<blockquote class="border-l-4 border-gray-500 pl-4 italic text-gray-300">$1</blockquote>')
+    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="underline text-cyan-300 hover:text-cyan-400">$1</a>')
+    .replace(/^-{3,}$/gm, '<hr class="my-2 border-gray-600">');
 }
+
 
 function setStatus(text) {
   const statusEl = document.getElementById("status");
