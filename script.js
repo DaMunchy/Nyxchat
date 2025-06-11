@@ -179,20 +179,24 @@ async function appendMessage(sender, text) {
 
 function formatMessage(message) {
   return message
-    .replace(/```([\s\S]*?)```/g, (match, code) => {
+   .replace(/```([\s\S]*?)```/g, (match, code) => {
   const escaped = code
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .trim(); 
+    .trim();
+
   return `
     <div class="relative group my-2">
+      <button onclick="copyToClipboard(this)" class="hidden group-hover:flex absolute top-2 right-2 px-2 py-1 text-xs bg-gray-700 text-white rounded hover:bg-gray-600 z-10">
+        Copy
+      </button>
       <pre class="whitespace-pre-wrap break-words bg-gray-800 text-green-300 p-3 rounded-lg overflow-x-auto text-sm">
-        <button onclick="copyToClipboard(this)" class="hidden group-hover:block absolute top-2 right-2 px-2 py-1 text-xs bg-gray-700 text-white rounded hover:bg-gray-600 z-10">Copy</button>
-        ${escaped}
+        <code>${escaped}</code>
       </pre>
     </div>
   `;
 })
+
 
     .replace(/`([^`]+)`/g, '<code class="bg-gray-700 px-1 py-0.5 rounded text-green-400">$1</code>')
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
@@ -204,17 +208,18 @@ function formatMessage(message) {
 }
 
 function copyToClipboard(button) {
-  const pre = button.closest("pre");
-  const code = pre?.querySelector("code")?.innerText?.trim();
-  if (!code) return;
+  const codeBlock = button.nextElementSibling.querySelector("code");
+  const text = codeBlock?.innerText?.trim();
+  if (!text) return;
 
-  navigator.clipboard.writeText(code).then(() => {
+  navigator.clipboard.writeText(text).then(() => {
     button.textContent = "Copied!";
     setTimeout(() => {
       button.textContent = "Copy";
     }, 1500);
   });
 }
+
 
 
 
