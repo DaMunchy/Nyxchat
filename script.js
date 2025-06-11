@@ -179,26 +179,20 @@ async function appendMessage(sender, text) {
 
 function formatMessage(message) {
   return message
-   .replace(/```([\s\S]*?)```/g, (match, code) => {
-  const escaped = code
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .trim();
-
-  return `
-    <div class="relative group my-2">
-      <button onclick="copyToClipboard(this)" class="hidden group-hover:flex absolute top-2 right-2 px-2 py-1 text-xs bg-gray-700 text-white rounded hover:bg-gray-600 z-10">
-        Copy
-      </button>
-      <pre class="whitespace-pre-wrap break-words bg-gray-800 text-green-300 p-3 rounded-lg overflow-x-auto text-sm">
-        <code>${escaped}</code>
-      </pre>
-    </div>
-  `;
-})
-
-
-    .replace(/`([^`]+)`/g, '<code class="bg-gray-700 px-1 py-0.5 rounded text-green-400">$1</code>')
+    .replace(/```([\s\S]*?)```/g, (match, code) => {
+      const escaped = code.trim().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      return `
+        <div class="relative group my-2">
+          <pre class="whitespace-pre-wrap bg-gray-800 text-green-300 p-3 rounded-lg overflow-x-auto text-sm leading-relaxed font-mono">
+<code>${escaped}</code></pre>
+          <button onclick="copyToClipboard(this)" 
+            class="absolute top-2 right-2 px-2 py-1 text-xs bg-gray-700 text-white rounded hover:bg-gray-600 hidden group-hover:block transition">
+            Copy
+          </button>
+        </div>
+      `;
+    })
+    .replace(/`([^`]+)`/g, '<code class="bg-gray-700 px-1 rounded text-green-400 text-sm font-mono">$1</code>')
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/(?<!\*)\*(?!\*)(.*?)\*(?!\*)/g, '<em class="italic text-blue-300">$1</em>')
     .replace(/~~(.*?)~~/g, '<del>$1</del>')
@@ -208,8 +202,9 @@ function formatMessage(message) {
 }
 
 function copyToClipboard(button) {
-  const codeBlock = button.nextElementSibling.querySelector("code");
-  const text = codeBlock?.innerText?.trim();
+  const codeElement = button.previousElementSibling.querySelector("code");
+  const text = codeElement?.innerText.trim();
+
   if (!text) return;
 
   navigator.clipboard.writeText(text).then(() => {
@@ -219,6 +214,7 @@ function copyToClipboard(button) {
     }, 1500);
   });
 }
+
 
 
 
