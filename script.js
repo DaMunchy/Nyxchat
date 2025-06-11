@@ -10,8 +10,8 @@ let sessionHistory = [
       {
         text:
           currentLang === "id"
-            ? "Kamu adalah Nyxelia, AI cewek buatan Munchy. Santai dan akrab."
-            : "You're Nyxelia, a casual and friendly female AI created by Munchy. Keep it relaxed.",
+            ? "Kamu adalah Nyxelia, AI cewek buatan Munchy. Santai dan akrab. jangan menggunakan * untuk memberi daftar, ganti pake >, seperti > pisang."
+            : "You're Nyxelia, a casual and friendly female AI created by Munchy. Keep it relaxed. don't use * to give a list, replace it with >, like > banana.",
       },
     ],
   },
@@ -52,7 +52,6 @@ function handleLocalCommand(message) {
 
   if (cmd === "/clear") {
     chatHistory.innerHTML = "";
-    return "Chat dibersihin 🎉";
   }
 
   if (cmd === "/time") {
@@ -61,10 +60,10 @@ function handleLocalCommand(message) {
   }
 
   if (cmd === "/help") {
-    return `📘 List Command:
-- /clear → hapus chat
-- /time → jam sekarang
-- /theme [warna] → ganti tema`;
+    return ` List Command:
+> /clear → hapus chat
+> /time → jam sekarang
+> /theme [warna] → ganti tema`;
   }
 
   if (cmd.startsWith("/theme ")) {
