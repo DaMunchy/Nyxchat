@@ -179,7 +179,17 @@ async function appendMessage(sender, text) {
 
 function formatMessage(message) {
   return message
-    .replace(/```([\s\S]*?)```/g, '<pre class="whitespace-pre-wrap break-words bg-gray-800 text-green-300 p-2 rounded-lg overflow-x-auto text-sm">$1</pre>')
+    .replace(/```([\s\S]*?)```/g, (match, code) => {
+      const escaped = code
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+      return `
+        <div class="relative group">
+          <button onclick="copyToClipboard(this)" class="hidden group-hover:block absolute top-2 right-2 px-2 py-1 text-xs bg-gray-700 text-white rounded hover:bg-gray-600 z-10">Copy</button>
+          <pre class="whitespace-pre-wrap break-words bg-gray-800 text-green-300 p-3 rounded-lg overflow-x-auto text-sm">${escaped}</pre>
+        </div>
+      `;
+    })
     .replace(/`([^`]+)`/g, '<code class="bg-gray-700 px-1 py-0.5 rounded text-green-400">$1</code>')
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/(?<!\*)\*(?!\*)(.*?)\*(?!\*)/g, '<em class="italic text-blue-300">$1</em>')
@@ -188,6 +198,19 @@ function formatMessage(message) {
     .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="underline text-cyan-300 hover:text-cyan-400">$1</a>')
     .replace(/^-{3,}$/gm, '<hr class="my-2 border-gray-600">');
 }
+
+function copyToClipboard(button) {
+  const code = button.nextElementSibling?.innerText;
+  if (!code) return;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.textContent = "Copied!";
+    setTimeout(() => {
+      button.textContent = "Copy";
+    }, 1500);
+  });
+}
+
 
 
 function setStatus(text) {
