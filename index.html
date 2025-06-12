@@ -113,8 +113,9 @@
     <img class="bg-foto" src="https://files.catbox.moe/5mie1c.jpeg" alt="Background" />
     <div class="blur-overlay"></div>
 
-    <div class="flex flex-col h-screen max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto px-3 pt-3 pb-1 relative z-10 bg-gray-900 bg-opacity-40 backdrop-blur-sm rounded-xl shadow-2xl">
-      <div class="flex justify-between items-center mb-6 pb-3 border-b border-gray-700">
+    <div class="flex flex-col h-screen max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto px-3 pt-2 pb-6 relative z-10 bg-gray-900 bg-opacity-40 backdrop-blur-sm rounded-xl shadow-2xl">
+
+      <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-700">
         <div class="flex items-center">
           <img src="https://placehold.co/50x50/F0F0F8/000000?text=N" alt="Foto Profil Nyxelia" class="w-12 h-12 rounded-full mr-3 border-2 border-green-500 object-cover shadow-md">
           <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-wide">
@@ -122,7 +123,7 @@
           </h1>
         </div>
         <div class="relative">
-          <button id="lang-button" class="px-4 py-2 rounded-full bg-purple-600 hover:bg-purple-700 text-white text-sm sm:text-base font-semibold shadow-lg transition duration-300 ease-in-out button-hover-effect button-focus-effect">
+          <button id="lang-button" class="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-sm sm:text-base font-semibold shadow-lg transition duration-300 ease-in-out button-hover-effect button-focus-effect">
             🌐 Bahasa
           </button>
           <div id="lang-menu" class="hidden absolute right-0 mt-3 w-36 sm:w-40 bg-gray-800 text-white rounded-xl shadow-xl z-50 overflow-hidden border border-gray-700">
@@ -134,23 +135,32 @@
 
       <div id="chat-history" class="flex-1 overflow-y-auto space-y-4 pr-3 custom-scrollbar"></div>
 
-      <form id="chat-form" class="flex items-center gap-3 bg-gray-800 bg-opacity-80 backdrop-blur-xl p-4 rounded-xl shadow-2xl mt-2 border border-gray-700">
-        <input
-          id="user-input"
-          type="text"
-          placeholder="Ketik pesan Anda di sini..."
-          class="flex-1 p-3 text-gray-100 text-base rounded-xl focus:outline-none placeholder-gray-400 shadow-inner bg-gray-700 border border-gray-600 focus:border-purple-500 transition duration-200"
-        />
-        <button
-          type="submit"
-          class="px-6 py-3 bg-gradient-to-br from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105 button-hover-effect button-focus-effect"
-        >
-          Kirim
-        </button>
-        <button id="mic-btn" type="button" class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-600 hover:bg-purple-700 text-white text-xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105 button-hover-effect button-focus-effect p-0">
-          🎙️
-        </button>
-      </form>
+      <form id="chat-form" class="flex items-center gap-3 bg-gray-800 bg-opacity-80 backdrop-blur-xl p-4 rounded-xl shadow-2xl mt-4 mb-4 border border-gray-700">
+  <input
+    id="user-input"
+    type="text"
+    placeholder="Ketik pesan Anda di sini..."
+    class="flex-1 p-3 text-gray-100 text-base rounded-xl focus:outline-none placeholder-gray-400 shadow-inner bg-gray-700 border border-gray-600 focus:border-purple-500 transition duration-200"
+  />
+  
+  <button
+    type="submit"
+    class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-lg transition duration-300 ease-in-out transform hover:scale-105 button-hover-effect button-focus-effect"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+      <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.542 60.542 0 0018.445-8.916.75.75 0 000-1.236A60.542 60.542 0 003.478 2.405z" />
+    </svg>
+  </button>
+
+  <button
+    id="mic-btn"
+    type="button"
+    class="w-12 h-12 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-700 text-white text-xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105 button-hover-effect button-focus-effect"
+  >
+    🎙️
+  </button>
+</form>
+
     </div>
     <script src="/script.js" defer></script>
   </body>
