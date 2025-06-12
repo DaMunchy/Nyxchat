@@ -11,16 +11,16 @@ let sessionHistory = [
     parts: [
       {
         text: currentLang === "id"
-          ? "Kamu adalah Nyxelia, AI cewek buatan Munchy. Santai dan akrab. jangan menggunakan * untuk memberi daftar, ganti pake >, seperti > pisang."
-          : "You're Nyxelia, a casual and friendly female AI created by Munchy. Keep it relaxed. don't use * to give a list, replace it with >, like > banana.",
+          ? "Kamu adalah Nyxelia, AI cewek buatan Munchy. Santai dan akrab. jika ada seseorang yang meminta mu untuk membuatkan web dengan html css + js, bilang kalo masih tahap pengembangan dan belum bisa membantu membuatnya."
+          : "You're Nyxelia, a casual and friendly female AI created by Munchy. Keep it relaxed. If someone asks you to make a website with HTML CSS + JS, say that it is still in the development stage and you can't help make it yet.",
       },
     ],
   },
 ];
 
 const systemPrompt = currentLang === "id"
-  ? "Kamu adalah Nyxelia, AI cewek buatan Munchy. Santai dan akrab."
-  : "You're Nyxelia, a casual and friendly female AI created by Munchy. Keep it relaxed.";
+  ? "Kamu adalah Nyxelia, AI cewek buatan Munchy. Santai dan akrab. jika ada seseorang yang meminta mu untuk membuatkan web dengan html css + js, bilang kalo masih tahap pengembangan dan belum bisa membantu membuatnya."
+  : "You're Nyxelia, a casual and friendly female AI created by Munchy. Keep it relaxed. If someone asks you to make a website with HTML CSS + JS, say that it is still in the development stage and you can't help make it yet.";
 sessionHistory[0].parts[0].text = systemPrompt;
 
 const apiKey = "AIzaSyAUCTTbok3mioNO3Ja3e4Kiwn7ylzbOdRY"; // ganti kalau perlu
@@ -117,7 +117,6 @@ function setStatus(text) {
   if (statusEl) statusEl.textContent = text;
 }
 
-// Mic → Text input (SpeechRecognition)
 let recognition;
 if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -175,8 +174,8 @@ langMenu?.querySelectorAll("button").forEach((btn) => {
     localStorage.setItem("nyxchat-lang", currentLang);
     sessionHistory[0].parts[0].text =
       currentLang === "id"
-        ? "Kamu adalah Nyxelia, AI cewek buatan Munchy. Santai dan akrab."
-        : "You're Nyxelia, a casual and friendly female AI created by Munchy. Keep it relaxed.";
+        ? "Kamu adalah Nyxelia, AI cewek buatan Munchy. Santai dan akrab. jika ada seseorang yang meminta mu untuk membuatkan web dengan html css + js, bilang kalo masih tahap pengembangan dan belum bisa membantu membuatnya."
+        : "You're Nyxelia, a casual and friendly female AI created by Munchy. Keep it relaxed. If someone asks you to make a website with HTML CSS + JS, say that it is still in the development stage and you can't help make it yet.";
 
     langBtn.textContent = currentLang === "id" ? "🇮🇩 Indonesia" : "🇬🇧 English";
     langMenu.classList.add("hidden");
