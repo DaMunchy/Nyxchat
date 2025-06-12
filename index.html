@@ -123,8 +123,8 @@
           </h1>
         </div>
         <div class="relative">
-          <button id="lang-button" class="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-sm sm:text-base font-semibold shadow-lg transition duration-300 ease-in-out button-hover-effect button-focus-effect">
-            🌐 Bahasa
+          <button id="lang-button" class="px-4 py-2 rounded-full bg-gray-700 hover:bg-purple-700 text-white text-sm sm:text-base font-semibold shadow-lg transition duration-300 ease-in-out button-hover-effect button-focus-effect">
+            🌐 Language
           </button>
           <div id="lang-menu" class="hidden absolute right-0 mt-3 w-36 sm:w-40 bg-gray-800 text-white rounded-xl shadow-xl z-50 overflow-hidden border border-gray-700">
             <button data-lang="id" class="block w-full text-left px-4 py-2 sm:px-5 sm:py-3 hover:bg-gray-700 transition duration-200">🇮🇩 Indonesia</button>
@@ -143,9 +143,11 @@
     class="flex-1 p-3 text-gray-100 text-base rounded-xl focus:outline-none placeholder-gray-400 shadow-inner bg-gray-700 border border-gray-600 focus:border-purple-500 transition duration-200"
   />
   
+ <div class="relative w-12 h-12">
   <button
+    id="send-btn"
     type="submit"
-    class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-lg transition duration-300 ease-in-out transform hover:scale-105 button-hover-effect button-focus-effect"
+    class="absolute inset-0 w-full h-full flex items-center justify-center rounded-full bg-gradient-to-br from-gray-600 to-gray-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-lg transition duration-300 ease-in-out transform hover:scale-105 button-hover-effect button-focus-effect hidden"
   >
     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
       <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.542 60.542 0 0018.445-8.916.75.75 0 000-1.236A60.542 60.542 0 003.478 2.405z" />
@@ -155,10 +157,12 @@
   <button
     id="mic-btn"
     type="button"
-    class="w-12 h-12 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-700 text-white text-xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105 button-hover-effect button-focus-effect"
+    class="absolute inset-0 w-full h-full flex items-center justify-center rounded-full bg-gray-600 hover:bg-purple-700 text-white text-xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105 button-hover-effect button-focus-effect"
   >
     🎙️
   </button>
+</div>
+
 </form>
 
     </div>
