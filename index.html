@@ -117,37 +117,37 @@
       <div class="flex justify-between items-center mb-8 pb-4 border-b border-gray-700">
         <div class="flex items-center">
           <img src="https://placehold.co/50x50/F0F0F8/000000?text=N" alt="Foto Profil Nyxelia" class="w-12 h-12 rounded-full mr-3 border-2 border-green-500 object-cover shadow-md">
-          <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-wide">
-            Nyxelia <span id="status" class="text-sm font-medium text-green-500 ml-3">● Online</span>
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-wide">
+            Nyxelia <span id="status" class="text-sm font-medium text-green-500 ml-2">● Online</span>
           </h1>
         </div>
         <div class="relative">
-          <button id="lang-button" class="px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold shadow-lg transition duration-300 ease-in-out button-hover-effect button-focus-effect">
-            🌐 Language
+          <button id="lang-button" class="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-sm sm:text-base font-semibold shadow-lg transition duration-300 ease-in-out button-hover-effect button-focus-effect">
+            🌐 Bahasa
           </button>
-          <div id="lang-menu" class="hidden absolute right-0 mt-3 w-40 bg-gray-800 text-white rounded-xl shadow-xl z-50 overflow-hidden border border-gray-700">
-            <button data-lang="id" class="block w-full text-left px-5 py-3 hover:bg-gray-700 transition duration-200">🇮🇩 Indonesia</button>
-            <button data-lang="en" class="block w-full text-left px-5 py-3 hover:bg-gray-700 transition duration-200">🇬🇧 English</button>
+          <div id="lang-menu" class="hidden absolute right-0 mt-3 w-36 sm:w-40 bg-gray-800 text-white rounded-xl shadow-xl z-50 overflow-hidden border border-gray-700">
+            <button data-lang="id" class="block w-full text-left px-4 py-2 sm:px-5 sm:py-3 hover:bg-gray-700 transition duration-200">🇮🇩 Indonesia</button>
+            <button data-lang="en" class="block w-full text-left px-4 py-2 sm:px-5 sm:py-3 hover:bg-gray-700 transition duration-200">🇬🇧 English</button>
           </div>
         </div>
       </div>
 
       <div id="chat-history" class="flex-1 overflow-y-auto space-y-4 pr-3 custom-scrollbar"></div>
 
-      <form id="chat-form" class="flex items-center gap-4 bg-gray-800 bg-opacity-80 backdrop-blur-xl p-5 rounded-xl shadow-2xl mt-6 border border-gray-700">
+      <form id="chat-form" class="flex items-center gap-3 bg-gray-800 bg-opacity-80 backdrop-blur-xl p-4 rounded-xl shadow-2xl mt-6 border border-gray-700">
         <input
           id="user-input"
           type="text"
           placeholder="Ketik pesan Anda di sini..."
-          class="flex-1 p-4 text-gray-100 text-lg rounded-xl focus:outline-none placeholder-gray-400 shadow-inner bg-gray-700 border border-gray-600 focus:border-purple-500 transition duration-200"
+          class="flex-1 p-3 text-gray-100 text-base rounded-xl focus:outline-none placeholder-gray-400 shadow-inner bg-gray-700 border border-gray-600 focus:border-purple-500 transition duration-200"
         />
         <button
           type="submit"
-          class="px-8 py-4 bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105 button-hover-effect button-focus-effect"
+          class="px-6 py-3 bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105 button-hover-effect button-focus-effect"
         >
           Kirim
         </button>
-        <button id="mic-btn" type="button" class="flex items-center justify-center w-14 h-14 rounded-full bg-purple-600 hover:bg-purple-700 text-white text-2xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105 button-hover-effect button-focus-effect p-0">
+        <button id="mic-btn" type="button" class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-600 hover:bg-purple-700 text-white text-xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105 button-hover-effect button-focus-effect p-0">
           🎙️
         </button>
       </form>
