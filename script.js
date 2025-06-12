@@ -18,12 +18,34 @@ let sessionHistory = [
   },
 ];
 
-const systemPrompt = currentLang === "id"
-  ? "Kamu adalah Nyxelia, AI cewek buatan Munchy. Santai dan akrab. jika ada seseorang yang meminta mu untuk membuatkan web dengan html css + js, bilang kalo masih tahap pengembangan dan belum bisa membantu membuatnya."
-  : "You're Nyxelia, a casual and friendly female AI created by Munchy. Keep it relaxed. If someone asks you to make a website with HTML CSS + JS, say that it is still in the development stage and you can't help make it yet.";
-sessionHistory[0].parts[0].text = systemPrompt;
+const systemPrompt = sessionHistory[0].parts[0].text;
+const apiKey = "AIzaSyAUCTTbok3mioNO3Ja3e4Kiwn7ylzbOdRY";
 
-const apiKey = "AIzaSyAUCTTbok3mioNO3Ja3e4Kiwn7ylzbOdRY"; // ganti kalau perlu
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const message = input.value.trim();
+  if (!message) return;
+
+  const localResult = handleLocalCommand(message);
+  if (localResult) {
+    appendMessage("user", message);
+    appendMessage("ai", localResult);
+    input.value = "";
+    return;
+  }
+
+  appendMessage("user", message);
+  input.value = "Follow DaMunchy On Github";
+  input.disabled = true;
+
+  setStatus("Typing...");
+  const reply = await callGeminiAPI(message);
+  appendMessage("ai", reply);
+  setStatus("● Online");
+  input.value = "";
+  input.dispatchEvent(new Event("input"));
+  input.disabled = false;
+});
 
 async function callGeminiAPI(message) {
   const messages = sessionHistory.concat([{ role: "user", parts: [{ text: message }] }]);
@@ -54,34 +76,6 @@ function handleLocalCommand(message) {
   }
   return null;
 }
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const message = input.value.trim();
-  if (!message) return;
-
-  const localResult = handleLocalCommand(message);
-  if (localResult) {
-    appendMessage("user", message);
-    appendMessage("ai", localResult);
-    input.value = "";
-    
-    return;
-  }
-
-  appendMessage("user", message);
-  input.value = "Follow DaMunchy On Github";
-  input.disabled = true;
-
-  setStatus("Typing...");
-  const reply = await callGeminiAPI(message);
-  appendMessage("ai", reply);
-  setStatus("● Online");
-  input.value = "";
-input.dispatchEvent(new Event("input"));
-input.disabled = false;
-
-});
 
 async function appendMessage(sender, text) {
   const container = document.createElement("div");
@@ -133,7 +127,7 @@ if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
   recognition.onresult = (event) => {
     const voiceText = event.results[0][0].transcript;
     input.value = voiceText;
-    input.dispatchEvent(new Event("input")); 
+    input.dispatchEvent(new Event("input"));
     form.dispatchEvent(new Event("submit"));
     setStatus("● Online");
   };
@@ -146,6 +140,7 @@ if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
   micBtn.disabled = true;
   micBtn.textContent = "🎤❌";
 }
+
 input.addEventListener("input", () => {
   const hasText = input.value.trim().length > 0;
   if (hasText) {
